@@ -53,4 +53,42 @@ abstract class NamedEntity(val text: String) {
 //     new Place("San Francisco")
 //   )
 //   entities.foreach(e => println(e.describe))
+//  NOTA DE HERNAN: Compila y ejecuta correcto
 // =====================================================================
+
+class Person(text: String) extends NamedEntity(text) {
+
+  override def entityType: String = "Person"
+
+}
+
+class Organization(text: String) extends NamedEntity(text) {
+
+  override def entityType: String = "Organization"
+
+}
+
+
+class University(text: String) extends Organization(text) {
+
+  override def entityType: String = "University"
+
+}
+
+class Technology(text: String) extends NamedEntity(text) {
+
+  override def entityType: String = "Technology"
+
+}
+
+class ProgrammingLanguage(text: String) extends Technology(text) {
+
+  override def entityType: String = "ProgrammingLanguage"
+
+}
+
+class Place(text: String) extends NamedEntity(text) {
+
+  override def entityType: String = "Place"
+
+}
