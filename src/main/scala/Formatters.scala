@@ -33,7 +33,8 @@ object Formatters {
   def formatNERResult(postTitle: String, entities: List[NamedEntity]): String = {
     val post = "post:" ++ postTitle
     val salida = if (entities != List()) {
-      val posts = entities.mkString("\n")
+      //aca cambie esta linea porque me devolvia las referencia a los objetos en vez de los objetos
+      val posts = entities.map(_.describe).mkString("\n")
       post ++ "\n" ++ 
       "Entidades detectadas" ++ "\n" ++
       posts
