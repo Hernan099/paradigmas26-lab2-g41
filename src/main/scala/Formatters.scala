@@ -31,7 +31,16 @@ object Formatters {
    *   Si no se detectaron entidades, mostrar un mensaje indicándolo.
    */
   def formatNERResult(postTitle: String, entities: List[NamedEntity]): String = {
-    ???
+    val post = "post:" ++ postTitle
+    val salida = if (entities != List()) {
+      val posts = entities.mkString("\n")
+      post ++ "\n" ++ 
+      "Entidades detectadas" ++ "\n" ++
+      posts
+    } else {
+    post ++ "\n" ++ "Sin entidades detectadas \n"
+    }
+    salida
   }
 
   /**
