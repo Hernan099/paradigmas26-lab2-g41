@@ -9,7 +9,7 @@ object Main {
     // Paso 1: Cargar diccionarios
     // ------------------------------------------------------------------
     // TODO (Ejercicio 2)
-    val dictionary: List[NamedEntity] = ???
+    val dictionary: List[NamedEntity] = loadAll()
 
     println(s"Diccionario cargado: ${dictionary.size} entidades.\n")
 
@@ -32,6 +32,9 @@ object Main {
     //   Para cada post:
     //     1. Detectar entidades
     //     2. Formatear y mostrar el resultado
+
+    //esta linea lo que hace es crear una lista de eentidades relacionadas a sus respectivos tipos
+    val detected_entitis : List[NamedEntity] = detectEntities(allPosts._2, Dictionary)
 
     // ------------------------------------------------------------------
     // Paso 4: Estadísticas globales

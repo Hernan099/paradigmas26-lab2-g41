@@ -79,7 +79,7 @@ object Dictionary {
     val en5 = loadFromFile("data/organizations.txt","organization")
     val entidades = List.concat(en1, en2, en3, en4, en5)
 
-     entidades
+    entidades
 
   }
 }
