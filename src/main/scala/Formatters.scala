@@ -38,7 +38,7 @@ object Formatters {
       "Entidades detectadas" ++ "\n" ++
       posts
     } else {
-    post ++ "\n" ++ "Sin entidades detectadas \n"
+      post ++ "\n" ++ "Sin entidades detectadas \n"
     }
     salida
   }
@@ -60,6 +60,8 @@ object Formatters {
    *     University: 2
    */
   def formatEntityStats(counts: Map[String, Int]): String = {
-    ???
+    val titulo = "=== Estadísticas de entidades ===\n"
+    val stats = counts.toList.sortBy(-_._2).map(x => s"${x._1}: ${x._2}").mkString("\n")
+    titulo + stats
   }
 }
