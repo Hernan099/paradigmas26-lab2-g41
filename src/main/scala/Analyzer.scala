@@ -35,8 +35,20 @@ object Analyzer {
    *                  )
    */
   def detectEntities(text: String, dictionary: List[NamedEntity]): List[NamedEntity] = {
-    dictionary.filter(entity => text.contains(entity.text))
+    // 1. Todo a minúsculas y limpiamos caracteres especiales por espacios
+    val limpio = text.toLowerCase().replaceAll("[^a-zA-Z0-9 ]", " ")
+    
+    // 2. Agregamos un espacio al inicio y al final para poder buscar la palabra completa
+    // Esto evita que "JavaScript" detecte "Java".
+    val textoBusqueda = " " + limpio + " "
+    
+    dictionary.filter { entity =>
+      val entityLower = entity.text.toLowerCase()
+      // Buscamos la entidad rodeada de espacios
+      textoBusqueda.contains(" " + entityLower + " ")
+    }
   }
+
 
   /**
    * Cuenta cuántas entidades de cada tipo fueron detectadas.
